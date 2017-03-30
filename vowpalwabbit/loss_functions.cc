@@ -167,8 +167,10 @@ public:
   }
 
   float getLoss(shared_data*, float prediction, float label)
-  { if (label != -1.f && label != 1.f)
+  { if (label != -1.f && label != 1.f) {
       cout << "You are using label " << label << " not -1 or 1 as loss function expects!" << endl;
+      throw "Invalid label";
+    }
     return log(1 + correctedExp(-label * prediction));
   }
 
